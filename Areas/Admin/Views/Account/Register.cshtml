@@ -1,0 +1,111 @@
+@model WebNews.Models.Account
+
+@{
+    Layout = "_LayoutAdminLogin";
+    ViewData["TitleLogin"] = "Đăng ký";
+}
+
+<div class="">
+    <div class="widget-body" style="border: 6px solid #76B774;background:#F7F7F7;">
+        <div class="widget-main" style="padding:16px 36px 36px;">
+            <h4 class="header green lighter bigger">
+                <i class="ace-icon fa fa-users blue"></i>
+                Đăng ký người dùng mới
+            </h4>
+
+            <div class="space-6"></div>
+            <p> Nhập thông tin của bạn để bắt đầu: </p>
+
+            <form asp-route="Register" method="post">
+                <fieldset>
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="text" asp-for="FullName" class="form-control" required="required" placeholder="Họ và tên" />
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="email" asp-for="Email" class="form-control" required="required" placeholder="Email" />
+                            <i class="ace-icon fa fa-envelope"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="password" asp-for="Password" class="form-control" required="required" placeholder="Mật khẩu" />
+                            <i class="ace-icon fa fa-envelope"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            @* <input type="number" asp-for="Gender" class="form-control" placeholder="Giới tính" /> *@
+                            <select asp-for="Gender" class="form-control" required>
+                                    <option value="0">Giới tính</option>
+									<option value="1">Nam</option>
+									<option value="2">Nữ</option>
+									<option value="3">Khác</option>
+							</select>
+                            @* <i class="ace-icon fa fa-envelope"></i> *@
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right" >
+                            <input type="date" class="form-control" style="padding-right: 2px;" asp-for="Birthday" placeholder="Ngày sinh" required="required" />
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ" required="required" />
+                            <i class="ace-icon fa fa-lock"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="text" asp-for="Message" class="form-control" placeholder="Thông điệp" required="required" />
+                            <i class="ace-icon fa fa-retweet"></i>
+                        </span>
+                    </label>
+
+                    <label class="block">
+                        <input type="checkbox" class="ace" />
+                        <span class="lbl">
+                            Đồng ý với
+                            <a href="#">Các điều khoản</a>
+                        </span>
+                    </label>
+
+                    <span class="green">@ViewBag.RegisterSuccess</span>
+                    <span class="text-danger">@ViewBag.RegisterFail</span>
+
+                    <div class="space-12"></div>
+
+                    <div class="clearfix">
+                        <button type="reset" class="width-30 pull-left btn btn-sm">
+                            <i class="ace-icon fa fa-refresh"></i>
+                            <span class="bigger-110">Reset</span>
+                        </button>
+
+                        <button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+                            <span class="bigger-110">Đăng ký</span>
+
+                            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="toolbar center" style="background-color:#76B774;padding:12px;">
+            <a asp-area="Admin" asp-controller="Account" asp-action="Login" class="back-to-login-link" style="color:#FE9;font-size:14px;font-weight:700;text-shadow:1px 0 1px rgb(0 0 0 / 25%);">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Trở về đăng nhập
+            </a>
+        </div>
+    </div><!-- /.widget-body -->
+</div><!-- /.signup-box -->

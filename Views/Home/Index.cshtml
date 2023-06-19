@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- search popup area -->
+@* <section class="main-content" style="margin-bottom: 30px;margin-top:30px;">
+	<div class="container-xl">
+		<div class="row gy-4">
+			<form asp-action="Index" method="get" class="d-flex search-form">
+				<input name="name" class="form-control me-2" type="text" placeholder="Tìm kiếm tin tức ..." aria-label="Search">
+				<button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
+			</form>
+		</div>
+	</div>
+</div> *@
+
+
+<!-- hero section -->
+@await Component.InvokeAsync("PostHeroView")
+
+<!-- section main content -->
+<section class="main-content">
+	<div class="container-xl">
+
+		<div class="row gy-4">
+			<div class="col-lg-8">
+				<!-- section header Entertain -->
+				
+				@await Component.InvokeAsync("EntertainView")
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- horizontal ads -->
+				<div class="ads-horizontal text-md-center">
+					<span class="ads-title">- Sponsored Ad -</span>
+					<a href="#">
+						<img src="images/ads/ad-750.png" alt="Advertisement" />
+					</a>
+				</div>
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- section header Life -->
+				
+				@await Component.InvokeAsync("LifeView")
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- section header Healthy -->
+				
+				@await Component.InvokeAsync("HealView")
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- section header Social -->
+				@await Component.InvokeAsync("SocialView")
+
+			</div>
+			
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget about -->
+                    @await Component.InvokeAsync("AbstractView")
+
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("RecentPostView")
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("RecommendView")
+
+					<!-- widget newsletter -->
+					@await Component.InvokeAsync("NewsLetterView")
+					
+					<!-- widget post carousel -->
+					@await Component.InvokeAsync("CommercialView")
+
+					<!-- widget advertisement -->
+					<div class="widget no-container rounded text-md-center">
+						<span class="ads-title">- Sponsored Ad -</span>
+						<a href="#" class="widget-ads">
+							<img src="images/ads/ad-360.png" alt="Advertisement" />	
+						</a>
+					</div>
+
+					<!-- widget tags -->
+					@await Component.InvokeAsync("TagCloudsView")
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>

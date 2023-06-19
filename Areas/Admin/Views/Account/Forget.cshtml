@@ -1,0 +1,61 @@
+@model WebNews.Models.Account
+
+@{
+    Layout = "_LayoutAdminLogin";
+    ViewData["TitleLogin"] = "Quên mật khẩu";
+}
+
+<div class="">
+    <div class="widget-body" style="border: 6px solid #976559;background:#F7F7F7;">
+        <div class="widget-main">
+            <h4 class="header red lighter bigger">
+                <i class="ace-icon fa fa-key"></i>
+                Quên mật khẩu
+            </h4>
+
+            <div class="space-6"></div>
+            <p>
+                Nhập thông tin Email của bạn
+            </p>
+
+            <form asp-route="Forget" method="post">
+                <fieldset>
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input asp-for="Email" type="email" class="form-control" placeholder="Email" required="required" />
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Mật khẩu mới" />
+                            <i class="ace-icon fa fa-key"></i>
+                        </span>
+                    </label>
+
+                    <p class="green">@ViewBag.ForgetSuccess</p>
+                    <p class="text-danger">@ViewBag.ForgetFail</p>
+
+                    <div class="space-12"></div>
+
+                    <div class="clearfix">
+                        <button type="submit" class="width-35 pull-right btn btn-sm btn-danger">
+                            <i class="ace-icon fa fa-lightbulb-o"></i>
+                            <span class="bigger-110">Xác nhận</span>
+                        </button>
+                    </div>
+                </fieldset>
+            </form>
+        </div><!-- /.widget-main -->
+
+        <div class="space-12"></div>
+
+        <div class="toolbar center" style="background-color:#C16050;padding:12px;">
+            <a asp-area="Admin" asp-controller="Account" asp-action="Login" class="back-to-login-link" style="color:#FE9;font-size:14px;font-weight:700;text-shadow:1px 0 1px rgb(0 0 0 / 25%);">
+                Trở về đăng nhập
+                <i class="ace-icon fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div><!-- /.widget-body -->
+</div><!-- /.forgot-box -->

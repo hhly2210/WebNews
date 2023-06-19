@@ -1,0 +1,123 @@
+@model WebNews.Models.Commercial
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Commercial" asp-action="Index">Quản lý Quảng cáo</a>
+				</li>
+				<li class="active">Thêm mới</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Thêm mới Quảng cáo
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<form class="form-horizontal" role="form" asp-action="Create" method="post">
+						<input type="hidden" asp-for="CommercialID"/>
+
+						<div class="form-group">
+							<label asp-for="Brand" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nhãn hàng </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Brand" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" required="required" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Title" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tiêu đề </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Title" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" required="required" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Link" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Đường dẫn </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Link" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group" style="margin-bottom: inherit;">
+							<label asp-for="Images" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ảnh tiêu đề </label>
+
+							<div class="input-group col-sm-9" style="margin-left:8px;">
+								<div class="input-group-prepend col-xs-10 col-sm-5">
+									<button class="btn btn-primary" type="button" style="padding-top: 4.9px;" onclick="openDialog()">Chọn ảnh</button><input class="text_input" type="text" style=" padding: 3px 4px 6px; "
+									asp-for="Images" id="file_input" aria-describedby="button-addon2" required="required" />		
+								</div>
+
+								@* <input style="margin-top:8px;" name="fImage" asp-for="Images" type="file" placeholder="" id="form-field-1" class="col-xs-10 col-sm-5" /> *@
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Content" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nội dung </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Content" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" required="required" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="IsActive" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+
+							<div class="col-sm-9" style="margin-top:8px;">
+								@Html.CheckBox("IsActive", false)
+								Cho phép
+							</div>
+						</div>
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+								<button class="btn btn-success" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Xác nhận
+								</button>
+
+								&nbsp; &nbsp; &nbsp;
+								<a asp-area="Admin" asp-controller="Commercial" asp-action="Index" class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Quay lại
+								</a>
+							</div>
+						</div>
+					</form>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->
+
+@{
+	var summernote = new WebNews.Models.Summernote("#Contents");
+}
+
+@section ScriptsAdmin {
+	<partial name="_Summernote" model="summernote" />
+}

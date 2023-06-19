@@ -1,0 +1,89 @@
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a asp-controller="Home" asp-action="Index">Trang khác</a>
+                </li>
+                <li class="active">Lỗi 404</li>
+            </ul><!-- /.breadcrumb -->
+
+        </div>
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="error-container">
+                        <div class="well">
+                            <h1 class="grey lighter smaller">
+                                <span class="blue bigger-125">
+                                    <i class="ace-icon fa fa-sitemap"></i>
+                                    404
+                                </span>
+                                Không tìm thấy trang
+                            </h1>
+
+                            <hr />
+                            <h3 class="lighter smaller">Chúng tôi đã tìm khắp nơi nhưng không thể tìm thấy nó!</h3>
+
+                            <div>
+                                <form class="form-search">
+                                    <span class="input-icon align-middle">
+                                        <i class="ace-icon fa fa-search"></i>
+
+                                        <input type="text" class="search-query" placeholder="Tìm kiếm..." />
+                                    </span>
+                                    <button class="btn btn-sm" type="button">Đi!</button>
+                                </form>
+
+                                <div class="space"></div>
+                                <h4 class="smaller">Hãy thử một trong những cách sau:</h4>
+
+                                <ul class="list-unstyled spaced inline bigger-110 margin-15">
+                                    <li>
+                                        <i class="ace-icon fa fa-hand-o-right blue"></i>
+                                        Kiểm tra lại url xem có lỗi chính tả không
+                                    </li>
+
+                                    <li>
+                                        <i class="ace-icon fa fa-hand-o-right blue"></i>
+                                        Đọc câu hỏi thường gặp
+                                    </li>
+
+                                    <li>
+                                        <i class="ace-icon fa fa-hand-o-right blue"></i>
+                                        Hãy cho chúng tôi biết về nó
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <hr />
+                            <div class="space"></div>
+
+                            <div class="center">
+                                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-grey">
+                                    <i class="ace-icon fa fa-arrow-left"></i>
+                                    Trở về
+                                </a>
+
+                                <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                                    <i class="ace-icon fa fa-tachometer"></i>
+                                    Trang chủ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

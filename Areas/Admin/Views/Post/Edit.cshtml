@@ -1,0 +1,167 @@
+@model WebNews.Models.Post
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Post" asp-action="Index">Quản lý Bài viết</a>
+				</li>
+				<li class="active">Chỉnh sửa</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Chỉnh sửa Bài viết
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<form class="form-horizontal" role="form" asp-area="Admin" asp-controller="Post" asp-action="Edit" method="post" enctype="multipart/form-data">
+						<input type="hidden" asp-for="PostID" />
+						<input type="hidden" asp-for="Author"/>
+						<input type="hidden" asp-for="AccountID" />
+
+						<div class="form-group">
+							<label asp-for="Title" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tiêu đề </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Title" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Abstract" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tóm tắt </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Abstract" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Link" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Đường dẫn </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Link" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="CreatedDate" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ngày viết </label>
+
+							<div class="col-sm-9">
+								<input asp-for="CreatedDate" type="date" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="PostOrder" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Sắp xếp </label>
+
+							<div class="col-sm-9">
+								<input asp-for="PostOrder" type="number" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="MenuID" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Thể loại </label>
+
+							<div class="col-sm-9">
+								<select asp-for="MenuID" asp-items="ViewBag.MenuID" class="col-xs-10 col-sm-5" required>
+									<option label="---- Lựa chọn ----"></option>
+								</select>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Status" class="col-sm-3 control-label no-padding-right" for="form-field-1"> </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Status" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group" style="margin-bottom: inherit;">
+							<label asp-for="Images" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Ảnh tiêu đề </label>
+
+							<div class="input-group col-sm-9" style="margin-left:8px;">
+								<div class="input-group-prepend col-xs-10 col-sm-5 d-flex">
+									<button class="btn btn-primary" type="button" style="padding-top: 4.9px;" onclick="openDialog()">Chọn ảnh</button><input class="text_input" type="text" style=" padding: 3px 4px 6px; "
+									asp-for="Images" id="file_input" aria-describedby="button-addon2" />
+								</div>
+
+								@* <input style="margin-top:8px;" name="fImage" asp-for="Images" type="file" placeholder="" id="form-field-1" class="col-xs-10 col-sm-5" /> *@
+							</div>
+						</div>
+
+						<div class="space-4"><span class="col-xs-10 col-sm-5" style="opacity: 0;">@Model.Images</span></div>
+
+						<div class="form-group" style="margin-bottom: inherit;">
+							<label asp-for="IsActive" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+
+							<div class="col-sm-9" style="margin-top:8px;padding-left:24px;">
+								@Html.CheckBox("IsActive", Model.IsActive)
+								Cho phép
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Contents" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nội dung </label>
+
+							<div class="col-sm-9">
+								<textarea asp-for="Contents" type="text" placeholder="" class="col-xs-10 col-sm-5" ></textarea>
+							</div>
+						</div>
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+								<button class="btn btn-info" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Lưu lại
+								</button>
+
+								&nbsp; &nbsp; &nbsp;
+								<a asp-area="Admin" asp-controller="Post" asp-action="Index" class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Quay lại
+								</a>
+							</div>
+						</div>
+					</form>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->
+
+@{
+	var summernote = new WebNews.Models.Summernote("#Contents");
+}
+
+@section ScriptsAdmin {
+	<partial name="_Summernote" model="summernote" />
+}

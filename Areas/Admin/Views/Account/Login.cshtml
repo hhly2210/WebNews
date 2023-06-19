@@ -1,0 +1,97 @@
+@model WebNews.Areas.Admin.Models.LoginViewModel
+
+@{
+    Layout = "_LayoutAdminLogin";
+    ViewData["TitleLogin"] = "Đăng nhập";
+}
+
+<div id="login-box" class="login-box visible widget-box no-border">
+    <div class="widget-body">
+        <div class="widget-main">
+            <h4 class="header blue lighter bigger">
+                <i class="ace-icon fa fa-coffee green"></i>
+                Vui lòng nhập vào thông tin của bạn
+            </h4>
+
+            <div class="space-6"></div>
+
+            <form asp-area="Admin" asp-controller="Account" asp-action="Login" method="post">
+                <fieldset>
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="text" asp-for="Email" class="form-control" value="tiendat@gmail.com" required="required" placeholder="Email" />
+                            <i class="ace-icon fa fa-user"></i>
+                        </span>
+                    </label>
+
+                    <label class="block clearfix">
+                        <span class="block input-icon input-icon-right">
+                            <input type="password" asp-for="Password" class="form-control" value="anhdat123" required="required" placeholder="Mật khẩu" />
+                            <i class="ace-icon fa fa-lock"></i>
+                        </span>
+                    </label>
+
+                    <div class="space"></div>
+
+                    <div class="clearfix">
+                        <label class="inline">
+                            <input type="checkbox" class="ace" />
+                            <span class="lbl"> Nhớ mật khẩu</span>
+                        </label>
+
+                        <button class="width-40 pull-right btn btn-sm btn-primary">
+                            <i class="ace-icon fa fa-key"></i>
+                            <span class="bigger-110">Đăng nhập</span>
+                        </button>
+                    </div>
+
+                    <p style="margin-top:8px;" class="text-danger">@ViewBag.Error</p>
+
+                    <div class="space-4"></div>
+                </fieldset>
+            </form>
+
+            <div class="social-or-login center">
+                <span class="bigger-110">Hoặc đăng nhập bằng</span>
+            </div>
+
+            <div class="space-6"></div>
+
+            <div class="social-login center">
+                <a class="btn btn-primary">
+                    <i class="ace-icon fa fa-facebook"></i>
+                </a>
+
+                <a class="btn btn-info">
+                    <i class="ace-icon fa fa-twitter"></i>
+                </a>
+
+                <a class="btn btn-danger">
+                    <i class="ace-icon fa fa-google-plus"></i>
+                </a>
+            </div>
+        </div><!-- /.widget-main -->
+
+        <div class="toolbar clearfix">
+            <div>
+                <a href="quen-mat-khau.html" class="forgot-password-link">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Quên mật khẩu
+                </a>
+            </div>
+
+            <div>
+                @* <a href="#" data-target="#signup-box" class="user-signup-link">
+                    Đăng ký nhanh
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                </a> *@
+
+                <a href="dang-ky.html" class="user-signup-link">
+                    Đăng ký nhanh
+                    <i class="ace-icon fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div><!-- /.widget-body -->
+</div><!-- /.login-box -->
+

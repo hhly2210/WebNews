@@ -1,0 +1,146 @@
+@model WebNews.Models.Menu
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Menu" asp-action="Index">Quản lý Menu</a>
+				</li>
+				<li class="active">Chỉnh sửa</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Chỉnh sửa Menu
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<form class="form-horizontal" role="form" asp-action="Edit">
+						<input type="hidden" asp-for="MenuID"/>
+
+						<div class="form-group">
+							<label asp-for="MenuName" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tiêu đề </label>
+
+							<div class="col-sm-9">
+								<input asp-for="MenuName" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="ControllerName" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên Controller </label>
+
+							<div class="col-sm-9">
+								<input asp-for="ControllerName" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="ActionName" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tên Action </label>
+
+							<div class="col-sm-9">
+								<input asp-for="ActionName" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Levels" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Cấp độ </label>
+
+							<div class="col-sm-9">
+								@* <input asp-for="Levels" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" /> *@
+								<select asp-for="Levels" class="form-select col-xs-10 col-sm-5" id="Levels form-field-1">
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="ParentID" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Menu cha </label>
+
+							<div class="col-sm-9">
+								@* <input asp-for="ParentID" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" /> *@
+								<select asp-for="ParentID" class="form-select col-xs-10 col-sm-5" id="ParentID form-field-1" asp-items="@(new SelectList(ViewBag.mnList, "Value", "Text"))">
+								</select>
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Link" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Đường dẫn </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Link" type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="MenuOrder" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Sắp xếp </label>
+
+							<div class="col-sm-9">
+								<input asp-for="MenuOrder" type="number" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="Position" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Vị trí </label>
+
+							<div class="col-sm-9">
+								<input asp-for="Position" type="number" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label asp-for="IsActive" class="col-sm-3 control-label no-padding-right" for="form-field-1"> Trạng thái </label>
+
+							<div class="col-sm-9" style="margin-top:8px;">
+								@Html.CheckBox("IsActive", Model.IsActive)
+								Cho phép
+							</div>
+						</div>
+
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+								<button class="btn btn-info" type="submit">
+									<i class="ace-icon fa fa-check bigger-110"></i>
+									Lưu lại
+								</button>
+
+								&nbsp; &nbsp; &nbsp;
+								<a asp-area="Admin" asp-controller="Menu" asp-action="Index" class="btn" type="reset">
+									<i class="ace-icon fa fa-undo bigger-110"></i>
+									Quay lại
+								</a>
+							</div>
+						</div>
+					</form>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

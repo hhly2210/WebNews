@@ -1,0 +1,65 @@
+@using WebNews.Models
+@using WebNews.Utilities
+@model IList<View_PostMenu>
+
+<div class="section-header">
+    <h3 class="section-title">Giải trí</h3>
+    <img src="images/wave.svg" class="wave" alt="wave" />
+</div>
+
+<div class="padding-30 rounded bordered">
+    <div class="row gy-5">
+        <div class="col-sm-6">
+            <!-- post -->
+            @foreach (var item in Model.Take(1))
+            {
+                string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+                string urlList = Functions.TitleSlugGeneration("list", item.MenuName, item.MenuID);
+                <div class="post">
+                    <div class="thumb rounded">
+                        <a href="/@urlList" class="category-badge position-absolute">@item.MenuName</a>
+                        <a href="/@url">
+                            <div class="inner">
+                                <img style="width:325px;height:233.41px;" src="@item.Images" alt="post-title" />
+                            </div>
+                        </a>
+                    </div>
+                    <ul class="meta list-inline mt-4 mb-0">
+                        <li class="list-inline-item">
+                            <a href="#">
+                                <img src="@item.Avatar" class="author"
+                                    style="width:30px;height:30px;border-radius:50%;" alt="author" />@item.FullName
+                            </a>
+                        </li>
+                        <li class="list-inline-item">@item.CreatedDate?.ToString("dd/MM/yyyy")</li>
+                    </ul>
+                    <h5 class="post-title mb-3 mt-3 rut-gon-2-dong"><a href="/@url">@item.Title</a></h5>
+                    <p class="excerpt mb-0 rut-gon-2-dong">@item.Abstract</p>
+                </div>
+            }
+        </div>
+        <div class="col-sm-6">
+            <!-- post -->
+            @foreach (var item in Model.Take(4))
+            {
+                string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+                <div class="post post-list-sm square">
+                    <div class="thumb rounded">
+                        <a href="/@url">
+                            <div class="inner">
+                                <img style="width:110px;height:80px;" src="@item.Images" alt="post-title" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="details clearfix">
+                        <h6 class="post-title my-0 rut-gon-2-dong"><a href="/@url">@item.Title</a>
+                        </h6>
+                        <ul class="meta list-inline mt-1 mb-0">
+                            <li class="list-inline-item">@item.CreatedDate?.ToString("dd/MM/yyyy")</li>
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

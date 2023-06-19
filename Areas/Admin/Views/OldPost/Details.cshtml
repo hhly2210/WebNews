@@ -1,0 +1,178 @@
+@model WebNews.Models.Post
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Home</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="OldPost" asp-action="Index">Bài viết đã đăng</a>
+				</li>
+				<li class="active">Chi tiết</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Chi tiết Bài viết
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<div>
+						<div id="user-profile-1" class="user-profile row">
+
+							<div class="">
+
+								<div class="space-12"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+									<div class="profile-info-row">
+										<label asp-for="PostID" class="profile-info-name"> Mã bài viết </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.PostID</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Title" class="profile-info-name"> Tiêu đề </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.Title</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Abstract" class="profile-info-name"> Tóm tắt </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Abstract</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Contents" class="profile-info-name"> Nội dung </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Html.Raw(Model.Contents)</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Images" class="profile-info-name"> Hình ảnh</label>
+
+										<div class="profile-info-value">
+											@* <span class="editable" id="username">@Model.Images</span> *@
+											<span class="editable" id="age">
+												@if (!string.IsNullOrEmpty(Model.Images))
+												{
+													<img  width="60" height="60" src="@Model.Images" alt="@Model.Title"/>
+												}
+											</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Link" class="profile-info-name"> Đường dẫn </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Link</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Author" class="profile-info-name"> Tác giả </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Account.FullName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="CreatedDate" class="profile-info-name"> Ngày viết </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.CreatedDate</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="IsActive" class="profile-info-name"> Trạng thái </label>
+
+										<div class="profile-info-value">
+											@if(@Model.IsActive == true) {
+												<span class="badge badge-primary">Công khai</span>
+											}
+											else {
+												<span class="badge">Riêng tư</span>
+											}
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="PostOrder" class="profile-info-name"> Sắp xếp </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.PostOrder</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="MenuID" class="profile-info-name"> Thể loại </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Menu.MenuName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Category" class="profile-info-name"> Thể loại </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Category</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Status" class="profile-info-name"></label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Status</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-6"></div>
+
+								<div class="center">
+									<form asp-action="Details" method="post">
+										<input type="hidden" asp-for="PostID" />
+										<a asp-area="Admin" asp-controller="OldPost" asp-action="Edit" asp-route-id="@Model.PostID" class="btn btn-sm btn-primary btn-white btn-round">
+											<i class="ace-icon fa fa-pencil bigger-120"></i>
+											<span class="bigger-110">Chỉnh sửa</span>
+										</a>
+										<a asp-area="Admin" asp-controller="OldPost" asp-action="Index" type="button" class="btn btn-sm btn-success btn-white btn-round">
+											<i class="menu-icon fa fa-list"></i>
+											<span class="bigger-110">Về danh sách</span>
+
+											<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+										</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

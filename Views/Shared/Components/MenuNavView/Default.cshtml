@@ -1,0 +1,50 @@
+@using WebNews.Models
+@using WebNews.Utilities
+@model IList<Menu>
+
+<div class="canvas-menu d-flex align-items-end flex-column">
+	<!-- close button -->
+	<button type="button" class="btn-close" aria-label="Close"></button>
+
+	<!-- logo -->
+	<div class="logo">
+		<a href="gioi-thieu.html"><img src="images/tintuc.png" style="width:118px;" alt="TinTuc" /></a>
+	</div>
+
+	<!-- menu -->
+	<nav>
+		<ul class="vertical-menu">
+            @foreach (var menu in Model.Where(m=>m.Levels == 1).OrderBy(n=>n.MenuOrder))
+            {
+                string url = Functions.TitleSlugGeneration("list", menu.MenuName, menu.MenuID);
+                var Pid = menu.MenuID;
+                var Smenu = Model.Where(p=>p.ParentID == Pid).OrderBy(p=>p.MenuOrder).ToList();
+
+                @if(Smenu.Count == 0) {
+                    <li><a href="/@url">@menu.MenuName</a></li>
+                }
+                else {
+                    <li class="">
+                        <a href="#">@menu.MenuName</a>
+                        <ul class="submenu">
+                            @foreach (var smn in Smenu)
+                            {
+                                string url1 = Functions.TitleSlugGeneration("list", smn.MenuName, smn.MenuID);
+                                <li><a href="/@url1">@smn.MenuName</a></li>
+                            }
+                        </ul>
+                    </li>
+                }                               
+            }
+		</ul>
+	</nav>
+
+	<!-- social icons -->
+	<ul class="social-icons list-unstyled list-inline mb-0 mt-auto w-100">
+		<li class="list-inline-item"><a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a></li>
+		<li class="list-inline-item"><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+		<li class="list-inline-item"><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+		<li class="list-inline-item"><a href="https://www.pinterest.com"><i class="fab fa-pinterest"></i></a></li>
+		<li class="list-inline-item"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+	</ul>
+</div>

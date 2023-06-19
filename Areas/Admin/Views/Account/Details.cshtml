@@ -1,0 +1,327 @@
+@model WebNews.Models.Account
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a asp-controller="Account" asp-action="Index">Quản lý tài khoản</a>
+                </li>
+                <li class="active">Thông tin</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content">
+
+            <div class="page-header">
+                <h1>
+                    Thông tin tài khoản
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        @Model.FullName
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div>
+                        <div id="user-profile-1" class="user-profile row">
+                            <div class="col-xs-12 col-sm-3 center">
+                                <div>
+                                    <span class="profile-picture">
+                                        <img class="editable img-responsive" alt="Alex's Avatar" src="@Model.Avatar" style="width:180px;height:180px;"/>
+                                    </span>
+
+                                    <div class="space-4"></div>
+
+                                    <div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right">
+                                        <div class="inline position-relative">
+                                            <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+                                                <i class="ace-icon fa fa-circle light-green"></i>
+                                                &nbsp;
+                                                <span class="white">@Model.FullName</span>
+                                            </a>
+
+                                            <ul class="align-left dropdown-menu dropdown-caret dropdown-lighter">
+                                                <li class="dropdown-header"> Change Status </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-circle green"></i>
+&nbsp;
+                                                        <span class="green">Available</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-circle red"></i>
+&nbsp;
+                                                        <span class="red">Busy</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="ace-icon fa fa-circle grey"></i>
+&nbsp;
+                                                        <span class="grey">Invisible</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space-6"></div>
+
+                                <div class="profile-contact-info">
+                                    <div class="profile-contact-links align-left">
+                                        <a href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-plus-circle bigger-120 green"></i>
+                                            Add as a friend
+                                        </a>
+
+                                        <a href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-envelope bigger-120 pink"></i>
+                                            Send a message
+                                        </a>
+
+                                        <a href="#" class="btn btn-link">
+                                            <i class="ace-icon fa fa-globe bigger-125 blue"></i>
+                                            www.alexdoe.com
+                                        </a>
+                                    </div>
+
+                                    <div class="space-6"></div>
+
+                                    <div class="profile-social-links align-center">
+                                        <a href="#" class="tooltip-info" title="" data-original-title="Visit my Facebook">
+                                            <i class="middle ace-icon fa fa-facebook-square fa-2x blue"></i>
+                                        </a>
+
+                                        <a href="#" class="tooltip-info" title="" data-original-title="Visit my Twitter">
+                                            <i class="middle ace-icon fa fa-twitter-square fa-2x light-blue"></i>
+                                        </a>
+
+                                        <a href="#" class="tooltip-error" title="" data-original-title="Visit my Pinterest">
+                                            <i class="middle ace-icon fa fa-pinterest-square fa-2x red"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="hr hr12 dotted"></div>
+
+                                <div class="clearfix">
+                                    <div class="grid2">
+                                        <span class="bigger-175 blue">25</span>
+
+                                        <br />
+                                        Người theo dõi
+                                    </div>
+
+                                    <div class="grid2">
+                                        <span class="bigger-175 blue">12</span>
+
+                                        <br />
+                                        Đang theo dõi
+                                    </div>
+                                </div>
+
+                                <div class="hr hr16 dotted"></div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-9">
+                                @* <div class="center">
+                                    <span class="btn btn-app btn-sm btn-light no-hover">
+                                        <span class="line-height-1 bigger-170 blue"> 1,411 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Views </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-yellow no-hover">
+                                        <span class="line-height-1 bigger-170"> 32 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Followers </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-pink no-hover">
+                                        <span class="line-height-1 bigger-170"> 4 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Projects </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-grey no-hover">
+                                        <span class="line-height-1 bigger-170"> 23 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Reviews </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-success no-hover">
+                                        <span class="line-height-1 bigger-170"> 7 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Albums </span>
+                                    </span>
+
+                                    <span class="btn btn-app btn-sm btn-primary no-hover">
+                                        <span class="line-height-1 bigger-170"> 55 </span>
+
+                                        <br />
+                                        <span class="line-height-1 smaller-90"> Contacts </span>
+                                    </span>
+                                </div> *@
+
+                                <div class="space-12"></div>
+
+                                <div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Tên tài khoản </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="username">@Model.FullName</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Quyền truy cập </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="username">@Model.Role.RoleName</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Địa chỉ </div>
+
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker light-orange bigger-110"></i>
+                                            <span class="editable" id="city">@Model.Address</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Ngày sinh </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="age">@Model.Birthday?.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Giới tính </div>
+                                            <div class="profile-info-value">
+                                                @if(Model.Gender == 1) {
+                                                    <span class="editable" >Nam</span>
+                                                }
+                                                else if(Model.Gender == 2) {
+                                                    <span class="editable" >Nữ</span>
+                                                }
+                                                else {
+                                                    <span class="editable" >Khác</span>
+                                                }
+                                            </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Số điện thoại </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="age">+84 327 534 013</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Email </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="age">@Model.Email</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Thông điệp </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="age"> @Model.Message </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Tham gia </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="signup">@Model.CreatedDate?.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Đăng nhập cuối </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="login">@Model.LastLogin</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name"> Tiểu sử </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="about">
+                                                @Model.Story
+                                            </span>
+                                        </div>
+                                    </div>
+
+									<div class="profile-info-row">
+                                        <div class="profile-info-name"> Trạng thái </div>
+
+                                        <div class="profile-info-value">
+                                            <span class="editable" id="about">
+                                                @if(@Model.Active == true) {
+													<span class="badge badge-primary">Công khai</span>
+												}
+												else {
+													<span class="badge">Riêng tư</span>
+												}
+												</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space-20"></div>
+
+                                <div class="hr hr2 hr-double"></div>
+
+                                <div class="space-6"></div>
+
+                                <div class="center">
+									<input type="hidden" asp-for="AccountID" />
+                                    <a asp-area="Admin" asp-controller="Account" asp-action="Edit" asp-route-id="@Model.AccountID" type="button" class="btn btn-sm btn-primary btn-white btn-round">
+                                        <i class="ace-icon fa fa-rss bigger-150 middle orange2"></i>
+                                        <span class="bigger-110">Chỉnh sửa thông tin</span>
+                                    </a>
+									<a asp-area="Admin" asp-controller="Account" asp-action="Index" type="button" class="btn btn-sm btn-success btn-white btn-round">
+                                        <span class="bigger-110">Quay lại</span>
+                                        <i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

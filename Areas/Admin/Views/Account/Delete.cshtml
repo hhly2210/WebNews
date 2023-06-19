@@ -1,0 +1,143 @@
+@model WebNews.Models.Account
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Account" asp-action="Index">Quản lý Tài khoản</a>
+				</li>
+				<li class="active">Xóa</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1 class="red">
+					Xóa Tài khoản
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<div class="clearfix">
+						<div class="pull-left alert alert-danger no-margin alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<i class="ace-icon fa fa-times"></i>
+							</button>
+
+							<i class="ace-icon fa fa-warning bigger-120 blue"></i>
+							Bạn có chắc chắn muốn xóa Tài khoản này không?
+						</div>
+					</div>
+
+					<div>
+						<div id="user-profile-1" class="user-profile row">
+
+							<div class="">
+
+								<div class="space-12"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+									<div class="profile-info-row">
+										<div class="profile-info-name">Mã Tài khoản</div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.AccountID</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Tên tài khoản </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.FullName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Địa chỉ Email </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.Email</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Ngày tạo </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.CreatedDate</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Đăng nhập lần cuối </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.LastLogin</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Ảnh đại diện </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.CreatedDate</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<div class="profile-info-name"> Quyền truy cập </div>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.Role.RoleName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Active" class="profile-info-name"> Trạng thái </label>
+
+										<div class="profile-info-value">
+											@if(@Model.Active == true) {
+												<span class="badge badge-primary">Công khai</span>
+											}
+											else {
+												<span class="badge">Riêng tư</span>
+											}
+										</div>
+									</div>
+								</div>
+
+								<div class="space-6"></div>
+
+								<div class="center">
+									<form asp-action="Delete" method="post">
+										<input type="hidden" asp-for="AccountID" />
+										<button type="submit" class="btn btn-sm btn-danger btn-white btn-round">
+											<i class="ace-icon fa fa-trash-o bigger-120"></i>
+											<span class="bigger-110">Xóa nhận xóa</span>
+										</button>
+										<a asp-area="Admin" asp-controller="Account" asp-action="Index" type="button" class="btn btn-sm btn-success btn-white btn-round">
+											<i class="menu-icon fa fa-list"></i>
+											<span class="bigger-110">Về danh sách</span>
+
+											<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+										</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

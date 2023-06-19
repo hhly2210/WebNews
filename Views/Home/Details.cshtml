@@ -1,0 +1,188 @@
+@model WebNews.Models.Post
+
+<!-- section main content -->
+<section class="main-content mt-3">
+	<div class="container-xl">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="#">@Model.Menu.MenuName</a></li>
+				<li class="breadcrumb-item active" aria-current="page">@Model.Title</li>
+			</ol>
+		</nav>
+
+		<div class="row gy-4">
+			<div class="col-lg-8">
+				<!-- post single -->
+				<div class="post post-single">
+					<!-- post header -->
+					<div class="post-header">
+						<h1 class="title mt-0 mb-3">@Model.Title</h1>
+						<ul class="meta list-inline mb-0">
+							<li class="list-inline-item">
+								<a href="#">
+									<img src="@Model.Account.Avatar" style="width:30px;height:30px;border-radius:50%;" class="author" alt="author"/>@Model.Author
+								</a>
+							</li>
+							<li class="list-inline-item"><a href="#">@Model.Menu.MenuName</a></li>
+							<li class="list-inline-item">@Model.CreatedDate?.ToString("dd/MM/yyyy")</li>
+						</ul>
+					</div>
+					<!-- featured image -->
+					@* <div class="featured-image">
+						<img src="@Model.Images" alt="post-title" />
+					</div> *@
+					<!-- post content -->
+					<div class="post-content clearfix">
+						<p>@Html.Raw(Model.Contents)</p>
+					</div>
+					<!-- post bottom section -->
+					<div class="post-bottom">
+						<div class="row d-flex align-items-center">
+							<div class="col-md-6 col-12 text-center text-md-start">
+								<!-- tags -->
+								<a href="#" class="tag">#Xu hướng</a>
+								<a href="#" class="tag">#Video</a>
+								<a href="#" class="tag">#Tin hot</a>
+								<a href="#" class="tag">#Trào lưu</a>
+							</div>
+							<div class="col-md-6 col-12">
+								<!-- social icons -->
+								<ul class="social-icons list-unstyled list-inline mb-0 float-md-end">
+									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="spacer" data-height="50"></div>
+
+				<div class="about-author padding-30 rounded">
+					<div class="thumb">
+						<img src="@Model.Account.Avatar" style="width:100px;height:100px;border-radius:50%;" alt="@Model.Author" />
+					</div>
+					<div class="details">
+						<h4 class="name"><a href="#">@Model.Author</a></h4>
+						<p>@Model.Account.Message</p>
+						<!-- social icons -->
+						<ul class="social-icons list-unstyled list-inline mb-0">
+							<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- section header -->
+				
+				<!-- post comments -->
+				@await Component.InvokeAsync("CommentView", new { postID = @Model.PostID })
+
+				<div class="spacer" data-height="50"></div>
+
+				<!-- section header -->
+				<div class="section-header">
+					<h3 class="section-title">Bình luận</h3>
+					<img src="images/wave.svg" class="wave" alt="wave" />
+				</div>
+				<!-- comment form -->
+				<div class="comment-form rounded bordered padding-30">
+
+					<form method="post" id="comment-form" class="comment-form" >
+						<div class="messages"></div>
+						<div class="row">
+							<input type="hidden" name="CommentID" />
+							<input type="hidden" name="PostID" value="@Model.PostID"/>
+							<div class="column col-md-12">
+								<!-- Email input -->
+								<div class="form-group">
+									<input type="text" class="form-control" name="FullName" placeholder="Your name">
+								</div>
+							</div>
+
+							<div class="column col-md-12">
+								<!-- Comment textarea -->
+								<div class="form-group">
+									<textarea required name="Content" class="form-control" rows="4" placeholder="Your comment here..."></textarea>
+								</div>
+							</div>
+						</div>
+
+						<button type="submit" value="Submit" class="btn btn-default">Gửi</button><!-- Submit Button -->
+					</form>
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+
+				<!-- sidebar -->
+				<div class="sidebar">
+					<!-- widget post carousel -->
+					@await Component.InvokeAsync("CommercialView")
+					
+					<!-- widget popular posts -->
+					@await Component.InvokeAsync("RecentPostView")
+
+					<!-- widget categories -->
+					@await Component.InvokeAsync("RecommendView")
+
+					<!-- widget newsletter -->
+					@* <div class="widget rounded">
+						<div class="widget-header text-center">
+							<h3 class="widget-title">Newsletter</h3>
+							<img src="images/wave.svg" class="wave" alt="wave" />
+						</div>
+						<div class="widget-content">
+							<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
+							<form>
+								<div class="mb-2">
+									<input class="form-control w-100 text-center" placeholder="Email address…" type="email">
+								</div>
+								<button class="btn btn-default btn-full" type="submit">Sign Up</button>
+							</form>
+							<span class="newsletter-privacy text-center mt-3">By signing up, you agree to our <a href="#">Privacy Policy</a></span>
+						</div>		
+					</div> *@
+
+					<!-- widget about -->
+					@* <div class="widget rounded">
+						<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+							<img src="images/logo.svg" alt="logo" class="mb-4" />
+							<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+							<ul class="social-icons list-unstyled list-inline mb-0">
+								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+							</ul>
+						</div>
+					</div> *@
+
+					<!-- widget advertisement -->
+					<div class="widget no-container rounded text-md-center">
+						<span class="ads-title">- Sponsored Ad -</span>
+						<a href="#" class="widget-ads">
+							<img src="images/ads/ad-360.png" alt="Advertisement" />	
+						</a>
+					</div>
+
+					<!-- widget tags -->
+					@await Component.InvokeAsync("TagCloudsView")
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

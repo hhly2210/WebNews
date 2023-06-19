@@ -1,0 +1,162 @@
+@using WebNews.Models
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Admin</a>
+                </li>
+                <li class="active">Duyệt bài viết</li>
+            </ul><!-- /.breadcrumb -->
+
+        </div>
+
+        <div class="page-content">
+
+            <div class="page-header">
+                <h1>
+                    Duyệt bài viết
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Danh sách
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="clearfix">
+                                <div class="pull-right tableTools-container"></div>
+                            </div>
+                            <div class="table-header">
+                                Danh sách Bài viết chờ duyệt
+                            </div>
+
+                            <!-- div.table-responsive -->
+                            <!-- div.dataTables_borderWrap -->
+                            <div>
+                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Thể loại</th>
+                                            <th>Tác giả</th>
+                                            <th>Ngày viết</th>
+                                            <th>Ẩn/Hiện</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+<!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="~/admin/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="~/admin/assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script src="~/admin/assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="~/admin/assets/js/jquery.dataTables.min.js"></script>
+<script src="~/admin/assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="~/admin/assets/js/dataTables.buttons.min.js"></script>
+<script src="~/admin/assets/js/buttons.flash.min.js"></script>
+<script src="~/admin/assets/js/buttons.html5.min.js"></script>
+<script src="~/admin/assets/js/buttons.print.min.js"></script>
+<script src="~/admin/assets/js/buttons.colVis.min.js"></script>
+<script src="~/admin/assets/js/dataTables.select.min.js"></script>
+
+<!-- ace scripts -->
+<script src="~/admin/assets/js/ace-elements.min.js"></script>
+<script src="~/admin/assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var myTable =
+            $('#dynamic-table')
+                .DataTable({
+                    bAutoWidth: false,
+                    "processing": true,
+                    "serverSide": false,
+                    "filter": true,
+                    "orderMulti": true,
+                    "ajax": {
+                        "url": "/Admin/BrowsePost/GetData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "postID", "autoWitdh": true },
+                        { "data": "title", "autoWitdh": false },
+                        { "data": "menuName", "autoWitdh": false },
+                        { "data": "author", "autoWitdh": false },
+                        { "data": "createdDate", "autoWitdh": false },
+                        { "data": "IsActive", "autoWitdh": false,
+                            "render": function(data, type, row, meta) {
+                                if(row.isActive == true) {
+                                    return `
+                                        <span class="badge badge-primary">Đã duyệt</span>
+                                    `
+                                }
+                                else {
+                                    return `
+                                        <span class="badge">Chờ duyệt</span>
+                                    `
+                                }
+                            }
+                        },
+                        {
+                            "render": function (data, type, full, meta) { 
+                                return '<a class="btn btn-xs btn-info" href="/Admin/BrowsePost/Edit/' + full.postID + '"><i class="ace-icon fa fa-pencil bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-danger" href="/Admin/BrowsePost/Delete/' + full.postID + '"><i class="ace-icon fa fa-trash-o bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-warning" href="/Admin/BrowsePost/Details/' + full.postID + '"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>'; 
+                            }
+                        }
+                    ]
+                });
+    });
+
+    function DeleteData(PostID) {
+        if (confirm("Are you sure you want to delete ...?")) {
+            Delete(PostID);
+        } else {
+            return false;
+        }
+    }
+
+
+function Delete(PostID) {
+    var url = '@Url.Content("~/")' + "Admin/Post/Delete";
+
+    $.post(url, { ID: PostID }, function(data) {
+        if (data) {
+            oTable = $('#dynamic-table').DataTable();
+            oTable.draw();
+        } else {
+            alert("Something Went Wrong!");
+        }
+    });
+}
+</script>

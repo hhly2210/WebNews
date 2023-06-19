@@ -1,0 +1,37 @@
+@using WebNews.Models
+@model IList<Commercial>
+
+<div class="widget rounded">
+    <div class="widget-header text-center">
+        <h3 class="widget-title">Quảng cáo</h3>
+        <img src="images/wave.svg" class="wave" alt="wave" />
+    </div>
+    <div class="widget-content">
+        <div class="post-carousel-widget">
+            <!-- post -->
+            @foreach (var item in Model)
+            {
+                <div class="post post-carousel">
+                    <div class="thumb rounded">
+                        <a href="@item.Link" class="category-badge position-absolute">Mua ngay</a>
+                        <a href="@item.Link">
+                            <div class="inner">
+                                <img src="@item.Images" alt="post-title" />
+                            </div>
+                        </a>
+                    </div>
+                    <h5 class="post-title mb-0 mt-4 center"><a href="@item.Link">@item.Title</a></h5>
+                    <ul class="meta list-inline mt-2 mb-0">
+                        <li class="list-inline-item"><a href="#">@item.Content</a></li>
+                        <li class="list-inline-item">@DateTime.Now.ToString("dd/MM/yyyy")</li>
+                    </ul>
+                </div>
+            }
+        </div>
+        <!-- carousel arrows -->
+        <div class="slick-arrows-bot">
+            <button type="button" data-role="none" class="carousel-botNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
+            <button type="button" data-role="none" class="carousel-botNav-next slick-custom-buttons" aria-label="Next"><i class="icon-arrow-right"></i></button>
+        </div>
+    </div>		
+</div>

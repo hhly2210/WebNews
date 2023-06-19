@@ -1,0 +1,41 @@
+/* .bo_ngoai {
+    position: relative;
+    border: 3px solid orange;
+    height: 50px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  } */
+  
+  .text_input {
+    height: inherit;
+    width: 75%;
+    line-height: 30px;
+    font-size: 20px;
+    padding: 3px 4px 6px;
+    margin: 3px;
+    margin-left: 0; margin-top: 0;
+    border: none;
+  }
+  .text_input:focus {
+    outline: none;
+  }
+  
+  .btn_chinhnut {
+    position: absolute; 
+    height: 50px;
+    line-height: 50px;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background: orange;
+    color: white;
+    border: none;
+    width: 30%;
+    font-weight: bold;
+  }
+  
+  .btn_chinhnut:hover {
+    color: black;
+    cursor: pointer;
+  }

@@ -1,0 +1,149 @@
+@model WebNews.Models.Menu
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Menu" asp-action="Index">Quản lý Menu</a>
+				</li>
+				<li class="active">Chi tiết</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Chi tiết Menu
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<div>
+						<div id="user-profile-1" class="user-profile row">
+
+							<div class="">
+
+								<div class="space-12"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+									<div class="profile-info-row">
+										<label asp-for="MenuID" class="profile-info-name"> Mã Menu </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.MenuID</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="MenuName" class="profile-info-name"> Tiêu đề </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.MenuName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="IsActive" class="profile-info-name"> Trạng thái</label>
+
+										<div class="profile-info-value">
+											@if(@Model.IsActive == true) 
+											{
+												<span class="badge badge-primary">Công khai</span>
+											}
+											else {
+												<span class="badge">Riêng tư</span>
+											}
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="ControllerName" class="profile-info-name"> Tên Controller </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.ControllerName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="ActionName" class="profile-info-name"> Tên Action </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.ActionName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Levels" class="profile-info-name"> Cấp độ</label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Levels</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="ParentID" class="profile-info-name"> Menu cha </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.ParentID</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Link" class="profile-info-name"> Đường dẫn </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Link</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="MenuOrder" class="profile-info-name"> Sắp xếp</label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.MenuOrder</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Position" class="profile-info-name"> Vị trí </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Position</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-6"></div>
+
+								<div class="center">
+									<form asp-action="Details" method="post">
+										<input type="hidden" asp-for="MenuID" />
+										<a asp-area="Admin" asp-controller="Menu" asp-action="Edit" asp-route-id="@Model.MenuID" class="btn btn-sm btn-primary btn-white btn-round">
+											<i class="ace-icon fa fa-pencil bigger-120"></i>
+											<span class="bigger-110">Chỉnh sửa</span>
+										</a>
+										<a asp-area="Admin" asp-controller="Menu" asp-action="Index" type="button" class="btn btn-sm btn-success btn-white btn-round">
+											<i class="menu-icon fa fa-list"></i>
+											<span class="bigger-110">Về danh sách</span>
+
+											<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+										</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

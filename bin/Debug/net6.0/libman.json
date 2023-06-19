@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "multiple-select@1.2.3",
+      "destination": "wwwroot/admin/assets/lib/multiple-select"
+    },
+    {
+      "library": "summernote@0.8.18",
+      "destination": "wwwroot/admin/assets/lib/summernote"
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/admin/assets/lib/jquery"
+    },
+    {
+      "library": "jqueryui@1.13.2",
+      "destination": "wwwroot/admin/assets/lib/jqueryui"
+    },
+    {
+      "library": "elfinder@2.1.61",
+      "destination": "wwwroot/admin/assets/lib/elfinder"
+    }
+  ]
+}

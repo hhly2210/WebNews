@@ -1,0 +1,158 @@
+@using WebNews.Models
+@model IList<Menu>
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Admin</a>
+                </li>
+
+                @* <li>
+                    <a href="#">Quản lý Menu</a>
+                </li> *@
+                <li class="active">Quản lý Menu</li>
+            </ul><!-- /.breadcrumb -->
+
+        </div>
+
+        <div class="page-content">
+
+            <div class="page-header">
+                <h1>
+                    Menu
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Danh sách
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <h4 class="pink">
+                        <i class="ace-icon fa fa-hand-o-right icon-animated-hand-pointer blue"></i>
+                        <a asp-area="Admin" asp-controller="Menu" asp-action="Create" role="button" class="btn btn-success" data-toggle="modal"> Thêm mới </a>
+                    </h4>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="clearfix">
+                                <div class="pull-right tableTools-container"></div>
+                            </div>
+                            <div class="table-header">
+                                Danh sách Menu
+                            </div>
+
+                            <!-- div.table-responsive -->
+                            <!-- div.dataTables_borderWrap -->
+                            <div>
+                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Mức</th>
+                                            <th>Menu cha</th>
+                                            <th>Thứ tự</th>
+                                            <th>Ẩn/Hiện</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+<!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="~/admin/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="~/admin/assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script src="~/admin/assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="~/admin/assets/js/jquery.dataTables.min.js"></script>
+<script src="~/admin/assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="~/admin/assets/js/dataTables.buttons.min.js"></script>
+<script src="~/admin/assets/js/buttons.flash.min.js"></script>
+<script src="~/admin/assets/js/buttons.html5.min.js"></script>
+<script src="~/admin/assets/js/buttons.print.min.js"></script>
+<script src="~/admin/assets/js/buttons.colVis.min.js"></script>
+<script src="~/admin/assets/js/dataTables.select.min.js"></script>
+
+<!-- ace scripts -->
+<script src="~/admin/assets/js/ace-elements.min.js"></script>
+<script src="~/admin/assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var myTable =
+            $('#dynamic-table')
+                .DataTable({
+                    bAutoWidth: false,
+                    "processing": true,
+                    "serverSide": false,
+                    "filter": true,
+                    "orderMulti": true,
+                    "ajax": {
+                        "url": "/Admin/Menu/GetData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "MenuID", "autoWitdh": false },
+                        { "data": "MenuName", "autoWitdh": false },
+                        { "data": "Levels", "autoWitdh": false },
+                        { "data": "ParentID", "autoWitdh": false },
+                        { "data": "MenuOrder", "autoWitdh": false },
+                        { "data": "IsActive", "autoWitdh": false, 
+                            "render": function(data, type, row, meta) {
+                                if(row.IsActive == true) {
+                                    return '<a href="#" data-id="row.MenuID"><span class="badge badge-primary">Công khai</span></a>';
+                                }
+                                else {
+                                    return '<a href="#"><span class="badge">Riêng tư</span></a>';
+                                }
+                            }
+                        },
+                        {
+                            "render": function(data, type, full, meta) { 
+                                return  '<a class="btn btn-xs btn-info" href="/Admin/Menu/Edit/' + full.MenuID + '"><i class="ace-icon fa fa-pencil bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-danger" href="/Admin/Menu/Delete/' + full.MenuID + '"><i class="ace-icon fa fa-trash-o bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-warning" href="/Admin/Menu/Details/' + full.MenuID + '"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>';
+                            }
+                        }
+                    ]
+                });
+    })
+
+    var user = {
+        init: function() {
+
+        },
+        registerEvents: function() {
+            $('.badge').off('click').on('click', function(e) {
+                e.preventDefault();
+                
+            })
+        }
+    }
+</script>

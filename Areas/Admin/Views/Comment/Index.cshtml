@@ -1,0 +1,141 @@
+@using WebNews.Models
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Admin</a>
+                </li>
+                <li class="active">Bình luận tương tác</li>
+            </ul><!-- /.breadcrumb -->
+
+        </div>
+
+        <div class="page-content">
+
+            <div class="page-header">
+                <h1>
+                    Bình luận tương tác
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Danh sách
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="clearfix">
+                                <div class="pull-right tableTools-container"></div>
+                            </div>
+                            <div class="table-header">
+                                Danh sách Bình luận tương tác
+                            </div>
+
+                            <!-- div.table-responsive -->
+                            <!-- div.dataTables_borderWrap -->
+                            <div>
+                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Mã bài viết</th>
+                                            <th>Tên độc giả</th>
+                                            <th>Nội dung</th>
+                                            <th>Thời gian</th>
+                                            <th>Ẩn/Hiện</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+<!-- basic scripts -->
+<!--[if !IE]> -->
+<script src="~/admin/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+<!--[if IE]>
+<script src="~/admin/assets/js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+<script src="~/admin/assets/js/bootstrap.min.js"></script>
+
+<!-- page specific plugin scripts -->
+<script src="~/admin/assets/js/jquery.dataTables.min.js"></script>
+<script src="~/admin/assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="~/admin/assets/js/dataTables.buttons.min.js"></script>
+<script src="~/admin/assets/js/buttons.flash.min.js"></script>
+<script src="~/admin/assets/js/buttons.html5.min.js"></script>
+<script src="~/admin/assets/js/buttons.print.min.js"></script>
+<script src="~/admin/assets/js/buttons.colVis.min.js"></script>
+<script src="~/admin/assets/js/dataTables.select.min.js"></script>
+
+<!-- ace scripts -->
+<script src="~/admin/assets/js/ace-elements.min.js"></script>
+<script src="~/admin/assets/js/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var myTable =
+            $('#dynamic-table')
+                .DataTable({
+                    bAutoWidth: false,
+                    "processing": true,
+                    "serverSide": false,
+                    "filter": true,
+                    "orderMulti": true,
+                    "ajax": {
+                        "url": "/Admin/Comment/GetData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "CommentID", "autoWitdh": true },
+                        { "data": "PostID", "autoWitdh": false },
+                        { "data": "FullName", "autoWitdh": false },
+                        { "data": "Content", "autoWitdh": false },
+                        { "data": "CreatedDate", "autoWitdh": false },
+                        { "data": "IsActive", "autoWitdh": false,
+                            "render": function(data, type, row, meta) {
+                                if(row.IsActive == true) {
+                                    return `
+                                        <span class="badge badge-primary">Công khai</span>
+                                    `
+                                }
+                                else {
+                                    return `
+                                        <span class="badge">Riêng tư</span>
+                                    `
+                                }
+                            }
+                        },
+                        {
+                            "render": function (data, type, full, meta) { 
+                                return '<a class="btn btn-xs btn-info" href="/Admin/Comment/Edit/' + full.CommentID + '"><i class="ace-icon fa fa-pencil bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-danger" href="/Admin/Comment/Delete/' + full.CommentID + '"><i class="ace-icon fa fa-trash-o bigger-120"></i></a> ' + 
+                                '<a class="btn btn-xs btn-warning" href="/Admin/Comment/Details/' + full.CommentID + '"><i class="ace-icon fa fa-search-plus bigger-130"></i></a>'; 
+                            }
+                        }
+                    ]
+                });
+    });
+
+</script>

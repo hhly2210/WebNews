@@ -1,0 +1,33 @@
+@using WebNews.Models
+@using WebNews.Utilities
+@model IList<View_PostMenu>
+
+<div class="widget rounded">
+    <div class="widget-header text-center">
+        <h3 class="widget-title">Cùng mục</h3>
+        <img src="images/wave.svg" class="wave" alt="wave" />
+    </div>
+    <div class="widget-content">
+        <!-- post -->
+        @foreach (var item in Model.Take(3))
+        {
+            string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+            <div class="post post-list-sm circle">
+                <div class="thumb circle">
+                    @* <span class="number"></span> *@
+                    <a href="/@url">
+                        <div class="inner">
+                            <img src="@item.Images" style="width:60px;height:60px;" alt="post-title" />
+                        </div>
+                    </a>
+                </div>
+                <div class="details clearfix">
+                    <h6 class="post-title my-0 rut-gon-2-dong"><a href="/@url">@item.Title</a></h6>
+                    <ul class="meta list-inline mt-1 mb-0">
+                        <li class="list-inline-item">@item.CreatedDate?.ToString("dd/MM/yyyy")</li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>

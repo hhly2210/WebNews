@@ -1,0 +1,19 @@
+@using WebNews.Models
+@using WebNews.Utilities
+@model IList<Recommend>
+
+<div class="widget rounded">
+    <div class="widget-header text-center">
+        <h3 class="widget-title">Liên kết hữu ích</h3>
+        <img src="images/wave.svg" class="wave" alt="wave" />
+    </div>
+    <div class="widget-content">
+        <ul class="list">
+            @foreach (var item in Model.Take(6))
+            {
+                <li><a href="@item.Link">@item.RecommendName</a></li>
+            }
+        </ul>
+    </div>
+    
+</div>

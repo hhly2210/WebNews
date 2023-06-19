@@ -1,0 +1,95 @@
+@model WebNews.Models.Contact
+
+<div class="main-content">
+	<div class="main-content-inner">
+		<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="ace-icon fa fa-home home-icon"></i>
+					<a href="#">Admin</a>
+				</li>
+
+				<li>
+					<a asp-area="Admin" asp-controller="Contact" asp-action="Index">Quản lý Liên hệ</a>
+				</li>
+				<li class="active">Chi tiết</li>
+			</ul><!-- /.breadcrumb -->
+		</div>
+
+		<div class="page-content">
+			<div class="page-header">
+				<h1>
+					Chi tiết Liên hệ
+				</h1>
+			</div><!-- /.page-header -->
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!-- PAGE CONTENT BEGINS -->
+					<div>
+						<div id="user-profile-1" class="user-profile row">
+
+							<div class="">
+
+								<div class="space-12"></div>
+
+								<div class="profile-user-info profile-user-info-striped">
+									<div class="profile-info-row">
+										<label asp-for="ContactID" class="profile-info-name"> Mã liên hệ </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.ContactID</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="FullName" class="profile-info-name"> Họ và Tên </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="city">@Model.FullName</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Subject" class="profile-info-name"> Tiêu đề </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Subject</span>
+										</div>
+									</div>
+
+									<div class="profile-info-row">
+										<label asp-for="Message" class="profile-info-name"> Nội dung </label>
+
+										<div class="profile-info-value">
+											<span class="editable" id="username">@Model.Message</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="space-6"></div>
+
+								<div class="center">
+									<form asp-action="Details" method="post">
+										<input type="hidden" asp-for="ContactID" />
+										@* <a asp-area="Admin" asp-controller="Commercial" asp-action="Edit" asp-route-id="@Model.CommercialID" class="btn btn-sm btn-primary btn-white btn-round">
+											<i class="ace-icon fa fa-pencil bigger-120"></i>
+											<span class="bigger-110">Chỉnh sửa</span>
+										</a> *@
+										<a asp-area="Admin" asp-controller="Contact" asp-action="Index" type="button" class="btn btn-sm btn-success btn-white btn-round">
+											<i class="menu-icon fa fa-list"></i>
+											<span class="bigger-110">Về danh sách</span>
+
+											<i class="icon-on-right ace-icon fa fa-arrow-right"></i>
+										</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- PAGE CONTENT ENDS -->
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.page-content -->
+	</div>
+</div><!-- /.main-content -->

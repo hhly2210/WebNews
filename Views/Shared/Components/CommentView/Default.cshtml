@@ -1,0 +1,24 @@
+@using WebNews.Models
+@model IList<Comment>
+
+<div class="section-header">
+    <h3 class="section-title">@ViewBag.Count Bình luận</h3>
+    <img src="images/wave.svg" class="wave" alt="wave" />
+</div>
+<div class="comments bordered padding-30 rounded">
+    <ul class="comments">
+        @foreach (var item in Model.Take(4))
+        {
+            <li class="comment rounded">
+                <div class="thumb">
+                    <img src="@item.Avatar" style="width:60px;height:60px;border-radius:50%;" alt="John Doe" />
+                </div>
+                <div class="details">
+                    <h4 class="name"><a href="#">@item.FullName</a></h4>
+                    <span class="date">@item.CreatedDate</span>
+                    <p>@item.Content</p>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

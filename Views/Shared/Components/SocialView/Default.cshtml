@@ -1,0 +1,67 @@
+@using WebNews.Models
+@using WebNews.Utilities
+@model IList<View_PostMenu>
+
+<div class="section-header">
+    <h3 class="section-title">Xã hội</h3>
+    <img src="images/wave.svg" class="wave" alt="wave" />
+</div>
+
+<div class="padding-30 rounded bordered">
+
+    <div class="row">
+        @foreach (var item in Model.Take(4))
+        {
+            string url = Functions.TitleSlugGeneration("post", item.Title, item.PostID);
+            string urlList = Functions.TitleSlugGeneration("list", item.MenuName, item.MenuID);
+            <div class="col-md-12 col-sm-6">
+                <div class="post post-list clearfix">
+                    <div class="thumb rounded">
+                        <a href="/@urlList" class="category-badge position-absolute">@item.MenuName</a>
+                        <a href="/@url">
+                            <div class="inner">
+                                <img style="width:265px;height:200.42px;" src="@item.Images" alt="post-title" />
+                            </div>
+                        </a>
+                    </div>
+                    <div class="details">
+                        <ul class="meta list-inline mb-3">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <img src="@item.Avatar" class="author"
+                                        style="width:30px;height:30px;border-radius:50%;" alt="author" />@item.FullName
+                                </a>
+                            </li>
+                            <li class="list-inline-item"><a href="/@urlList">@item.MenuName</a></li>
+                            <li class="list-inline-item">@item.CreatedDate?.ToString("dd/MM/yyyy")</li>
+                        </ul>
+                        <h5 class="post-title rut-gon-2-dong"><a href="/@url">@item.Title</a></h5>
+                        <p class="excerpt mb-0 rut-gon-2-dong">@item.Abstract</p>
+                        <div class="post-bottom clearfix d-flex align-items-center">
+                            <div class="social-share me-auto">
+                                <button class="toggle-button icon-share"></button>
+                                <ul class="icons list-unstyled list-inline mb-0">
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="more-button float-end">
+                                <a href="blog-single.html"><span class="icon-options"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    <!-- load more button -->
+    <div class="text-center">
+        <button class="btn btn-simple">Load More</button>
+    </div>
+
+</div>

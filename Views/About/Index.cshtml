@@ -1,0 +1,92 @@
+<section class="page-header">
+    <div class="container-xl">
+        <div class="text-center">
+            <h1 class="mt-0 mb-2">Giới thiệu</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="#">Tin tức</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Giới thiệu</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- section main content -->
+<section class="main-content">
+    <div class="container-xl">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+
+                <div class="page-content bordered rounded padding-30">
+
+                    @* <img src="https://vilica.vn/wp-content/uploads/2021/08/Nhung-luu-y-ban-can-biet-de-ban-hang-tren-Shopee-hieu-qua-Kiem-tien-101.jpg" alt="Katen Doe" class="rounded mb-4" /> *@
+
+                    <iframe class="rounded mb-4" style="width:674px;height:449px;" src="https://www.youtube.com/embed/KVbesJ8YQKA" title="Giới thiệu đồ án môn học phát triển ứng dụng web nhóm 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <p>Xin chào, chúng tôi là người sáng lập trang web tin tức, người viết nội dung giải trí, đời sống và thời sự. Chúng tôi giúp độc giả đưa nội dung phù hợp đến đúng người.</p>
+
+                    <p>Nhóm chúng tôi gồm có 3 người cùng nhau xây dựng lên trang web tin tức.</p>
+
+                    <ul>
+                        <li>Tôi Phan Tiến Đạt, là quản trị viên của trang web</li>
+                        <li>Hoàng Hải Lý là người quản lý hệ thông cơ sở dữ liệu của trang web</li>
+                        <li>Kinalone vongphachanh là người giới thiệu và quảng cáo website tin tức đến với mọi độc giả có nhu cầu cập nhật tin mới mỗi ngày</li>
+                    </ul>
+                    
+                    <p>Ngành công nghệ thông tin là một ngành khoa học đang trên đà phát triển mạnh và ứng dụng rộng rãi trên nhiều lĩnh vực. Cung với xu hướng phát triển của các phương tiện truyền thông như Báo, Radio, … thì việc sử dụng Internet ngày càng phổ biến. Truy cập Internet , chúng ta có được một kho thông tin khổng lồ phục vụ mọi nhu cầu, mục đích của chúng ta chỉ bằng một cái nhấp chuột.</p>
+                    
+                    <p>Nhận thức được nhu cầu tìm hiểu thông tin, giải trí của xã hội, là sự ra đời của hàng loạt website cho cá mục đích thương mại, giải trí, tin tức… Để đáp ứng với việc cập nhật thông tin hàng ngày, tính hình xã hội, chính trị, thời sự, và sức khỏe… thì website tin tức ra đời là một nhu cầu tất yếu.</p>
+
+                    <hr class="my-4" />
+                    <ul class="social-icons list-unstyled list-inline mb-0">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.pinterest.com/"><i class="fab fa-pinterest"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+
+                <!-- sidebar -->
+                <div class="sidebar">
+                    <!-- widget about -->
+                    @await Component.InvokeAsync("AbstractView")
+
+                    <!-- widget popular posts -->
+                    
+
+                    <!-- widget categories -->
+                    @await Component.InvokeAsync("RecommendView")
+
+                    <!-- widget newsletter -->
+                    @await Component.InvokeAsync("NewsLetterView")
+
+                    <!-- widget post carousel -->
+                    @await Component.InvokeAsync("CommercialView")
+
+                    <!-- widget advertisement -->
+                    <div class="widget no-container rounded text-md-center">
+                        <span class="ads-title">- Sponsored Ad -</span>
+                        <a href="#" class="widget-ads">
+                            <img src="images/ads/ad-360.png" alt="Advertisement" />	
+                        </a>
+                    </div>
+
+                    <!-- widget tags -->
+                    @await Component.InvokeAsync("TagCloudsView")
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
